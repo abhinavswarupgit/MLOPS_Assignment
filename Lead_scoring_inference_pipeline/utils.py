@@ -142,6 +142,10 @@ def get_models_prediction(db_path, db_file_name, model_file_path, model_name, mo
     merge_df['app_complete_flag_pred'] = predictions
     print('merge_df : ', merge_df.columns)
     
+    #write to csv
+    merge_df.to_csv('dags/Lead_scoring_data_pipeline/data/leadscoring_inference_final_v2.csv')
+    
+    #write to db
     __save_data_to_db(db_path, db_file_name, merge_df, 'FINAL_PREDICTION')
 
 
